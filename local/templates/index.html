@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CLOSAT故事种子生成器</title>
+</head>
+<body>
+
+<div class="add" style="padding:50px 200px;">
+    <h1>CLOSAT故事种子生成器</h1>
+    <form id="closat" method="post" name = "closat">
+        <input type="text" name="type" placeholder="卡片类型，必填" required="required">
+        <br/>
+        <input type="text" name="cardname" placeholder="卡片名称，必填" required="required">
+        <br/>
+        <textarea rows="10" cols="30" name = "detail" placeholder="卡片详细描述"></textarea>
+        <br/>
+        <button type="submit" form="closat" value="add" name='add'>新增</button>
+<br/><br/>
+    </form>
+    <div></div>
+    <hr/>
+    <form method="method">
+            <button type="submit" name="random" value="random1">随机取1张某类型的卡片</button>
+        <button type="submit" name="random" value="random4">随机取2人物1地点1物件卡</button>
+        <button type="submit" name="random" value="allcard">查看所有卡片</button>
+        <br><br/>
+        <button type="submit" name="help" value="help">使用说明</button>
+</form>
+    <hr/>
+    {% if name %}
+    <h1>    {{result}}<br>你刚刚提交的卡片是：</h1>
+    <h3>卡片名称 {{name}}!</h3>
+        <h3>卡片类型 {{type}}!</h3>
+        <h3>卡片描述 {{detail}}!</h3>
+    {% elif result %}
+    {{result}}
+    {% else %}
+    <h1>欢迎使用！</h1>
+    {% endif %} <!-- 这里实际是需要endif而不是end if-->
+
+    {% if help %}
+    <h1>使用说明</h1>
+    <ul>{% for x in help.split('\n') %}
+        <li>{{ x }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %} <!-- 这里实际是需要endif而不是end if-->
+
+    {% if card1 %}
+    <h1>卡片展示</h1>
+    <ul>{% for x in card1 %}
+        <li>{{ x }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %} <!-- 这里实际是需要endif而不是end if-->
+
+</div>
+</body>
+</html>
