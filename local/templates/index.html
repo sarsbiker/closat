@@ -2,30 +2,47 @@
 <html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>CLOSAT故事种子生成器</title>
 </head>
 <body>
 
-<div class="add" style="padding:50px 200px;">
+<div class="add" style="margin:50px 0 0 30%;width:600px;">
     <h1>CLOSAT故事种子生成器</h1>
-    <form id="closat" method="post" name = "closat">
-        <input type="text" name="type" placeholder="卡片类型，必填" required="required">
+    <form id="closat" method="post" name = "closat" role="form">
+        <!--<input type="text" class="form-control" name="type" placeholder="卡片类型，必填" required="required">-->
+        <label for="cardtype">卡片类型</label>
+        <select class="form-control" name="type" id="cardtype">
+            <option value="人物">C-人物</option>
+            <option value="地点">L-地点</option>
+            <option value="物件">O-物件</option>
+            <option value="情景">S-情景</option>
+            <option value="行动">A-行动</option>
+            <option value="主题">T-主题</option>
+        </select>
         <br/>
-        <input type="text" name="cardname" placeholder="卡片名称，必填" required="required">
+        <label for="cardname">卡片名称</label>
+        <input type="text" class="form-control" name="cardname" id="cardname" placeholder="卡片名称，必填" required="required">
         <br/>
-        <textarea rows="10" cols="30" name = "detail" placeholder="卡片详细描述"></textarea>
+        <textarea class="form-control" rows="8" name = "detail" placeholder="卡片详细描述"></textarea>
         <br/>
-        <button type="submit" form="closat" value="add" name='add'>新增</button>
+        <button type="submit"  class="btn btn-default" form="closat" value="add" name='add'>新增</button>
 <br/><br/>
     </form>
     <div></div>
     <hr/>
     <form method="method">
-            <button type="submit" name="random" value="random1">随机取1张某类型的卡片</button>
-        <button type="submit" name="random" value="random4">随机取2人物1地点1物件卡</button>
-        <button type="submit" name="random" value="allcard">查看所有卡片</button>
+            <button type="submit"  class="btn btn-default" name="random" value="random1">随机取1张某类型的卡片</button>
+        <button type="submit"  class="btn btn-default" name="random" value="random4">随机取2人物1地点1物件卡</button>
+        <button type="submit" class="btn btn-default" name="random" value="allcard">查看所有卡片</button>
         <br><br/>
-        <button type="submit" name="help" value="help">使用说明</button>
+        <button type="submit" class="btn btn-default" name="help" value="help">使用说明</button>
 </form>
     <hr/>
     {% if name %}
