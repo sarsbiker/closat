@@ -27,7 +27,7 @@ def home(name=None,card=None,type=None,card1=None):
         return render_template('index.html', help=help2)
     elif randomcard != None:
         card1=task.random_card(randomcard)
-        return render_template('index.html',card1=card1)
+        return render_template('show.html',card1=card1)
     elif card == None:
         return render_template('index.html', name='card')
     else:

@@ -41,7 +41,7 @@ class Cards():
         type3 = '物件'
         list1 = ['人物','地点','物件','主题']
         if gametype == 'random4':
-            return self.random_some_card(type1,2), self.random_some_card(type2, 1), self.random_some_card(type3, 1)
+            return self.random_some_card(type1,2) + self.random_some_card(type2, 1) + self.random_some_card(type3, 1)
         elif gametype == 'random1':
             return self.random_some_card(random.choice(list1),1)
         elif gametype == 'allcard':
@@ -51,7 +51,7 @@ class Cards():
         '''按指定类型和数量读取N张卡片信息'''
         conn = sqlite3.connect('closat.db')
         c = conn.cursor()
-        get_cards = list(c.execute("select cardname,type,detail from cards where type = ? ", (type,)))
+        get_cards = list(c.execute("select type,cardname,detail from cards where type = ? ", (type,)))
         #如果数据量较大，就要考虑先数一下有多少张卡片，然后再取一个随机数，再取读取一遍；或者直接随机取
         if len(get_cards) < num:
             return False

@@ -15,29 +15,10 @@
 
 <div class="add" style="margin:50px 0 0 30%;width:600px;">
     <h1>CLOSAT故事种子生成器</h1>
-    <form id="closat" method="post" name = "closat" role="form">
-        <!--<input type="text" class="form-control" name="type" placeholder="卡片类型，必填" required="required">-->
-        <label for="cardtype">卡片类型</label>
-        <select class="form-control" name="type" id="cardtype">
-            <option value="人物">C-人物</option>
-            <option value="地点">L-地点</option>
-            <option value="物件">O-物件</option>
-            <option value="情景">S-情景</option>
-            <option value="行动">A-行动</option>
-            <option value="主题">T-主题</option>
-        </select>
-        <br/>
-        <label for="cardname">卡片名称</label>
-        <input type="text" class="form-control" name="cardname" id="cardname" placeholder="卡片名称，必填" required="required">
-        <br/>
-        <textarea class="form-control" rows="8" name = "detail" placeholder="卡片详细描述"></textarea>
-        <br/>
-        <button type="submit"  class="btn btn-default" form="closat" value="add" name='add'>新增</button>
-<br/><br/>
-    </form>
+    <h2>生成卡片</h2>
     <div></div>
     <hr/>
-    <form method="method">
+    <form method="post">
             <button type="submit"  class="btn btn-default" name="random" value="random1">随机取1张某类型的卡片</button>
         <button type="submit"  class="btn btn-default" name="random" value="random4">随机取2人物1地点1物件卡</button>
         <button type="submit" class="btn btn-default" name="random" value="allcard">查看所有卡片</button>
@@ -45,17 +26,6 @@
         <button type="submit" class="btn btn-default" name="help" value="help">使用说明</button>
 </form>
     <hr/>
-    {% if name %}
-    <h1>    {{result}}<br>你刚刚提交的卡片是：</h1>
-    <h3>卡片名称 {{name}}!</h3>
-        <h3>卡片类型 {{type}}!</h3>
-        <h3>卡片描述 {{detail}}!</h3>
-    {% elif result %}
-    {{result}}
-    {% else %}
-    <h1>欢迎使用！</h1>
-    {% endif %} <!-- 这里实际是需要endif而不是end if-->
-
     {% if help %}
     <h1>使用说明</h1>
     <ul>{% for x in help.split('\n') %}
@@ -66,9 +36,10 @@
 
     {% if card1 %}
     <h1>卡片展示</h1>
+    <br>卡片名称【类型】：卡片描述<br><br>
     <ul>{% for x in card1 %}
-        <li>{{ x }}</li>
-        <h3>{{ x[0]}}</h3>
+        <b>{{ x[1]}}</b>【{{ x[0] }}】
+        ：{{ x[2] }}<br><br>
     {% endfor %}
     </ul>
     {% endif %} <!-- 这里实际是需要endif而不是end if-->
