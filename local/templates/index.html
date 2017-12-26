@@ -37,7 +37,7 @@
     </form>
     <div></div>
     <hr/>
-    <form method="method">
+    <form method="post">
             <button type="submit"  class="btn btn-default" name="random" value="random1">随机取1张某类型的卡片</button>
         <button type="submit"  class="btn btn-default" name="random" value="random4">随机取2人物1地点1物件卡</button>
         <button type="submit" class="btn btn-default" name="random" value="allcard">查看所有卡片</button>
@@ -45,9 +45,9 @@
         <button type="submit" class="btn btn-default" name="help" value="help">使用说明</button>
 </form>
     <hr/>
-    {% if name %}
+    {% if cardname %}
     <h1>    {{result}}<br>你刚刚提交的卡片是：</h1>
-    <h3>卡片名称 {{name}}!</h3>
+    <h3>卡片名称 {{cardname}}!</h3>
         <h3>卡片类型 {{type}}!</h3>
         <h3>卡片描述 {{detail}}!</h3>
     {% elif result %}
